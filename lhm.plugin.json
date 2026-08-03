@@ -1,0 +1,429 @@
+{
+  "author": "Sultan Kadyrkesh",
+  "authorUrl": "https://github.com/sultanlive",
+  "description": "Publish, schedule and verify social posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads and Facebook from your AI assistant. Remote MCP server, OAuth 2.1, no API keys.",
+  "identifier": "sultanlive-1social-mcp",
+  "name": "1Social MCP",
+  "tags": [
+    "social-media",
+    "publishing",
+    "scheduling",
+    "instagram",
+    "tiktok",
+    "linkedin",
+    "bluesky",
+    "threads",
+    "cross-posting"
+  ],
+  "tools": [
+    {
+      "name": "list_accounts",
+      "description": "Lists the social accounts the user has connected to 1Social, what each network will accept (caption length, whether media is required, whether it can thread), the current plan, and the remaining monthly posting quota. Call this before composing anything: channel ids from here are required by every other tool. Connecting a new account needs a browser and cannot be done from a chat.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "preview_post",
+      "description": "Checks a draft post against each selected network WITHOUT publishing it, and reports what would go wrong: per-segment character counts against each limit, whether a network requires an image, whether a multi-segment post will publish as a native thread or be joined into one post, and what the post would cost against the remaining quota. Pass any attached image or video in `media` (or `mediaUrls` if you only have a public link) so the check accounts for it. Always call this before publish_post — it is free and it is the only preview that exists.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "segments": {
+            "minItems": 1,
+            "maxItems": 25,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 10000,
+                  "description": "The text of this post. Must not be blank."
+                },
+                "mediaIds": {
+                  "default": [],
+                  "description": "URLs of media already stored with 1Social. Leave empty and use the `media` field to attach a file.",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "required": [
+                "text"
+              ]
+            },
+            "description": "The post. One segment is a normal post; two or more is a thread."
+          },
+          "channelIds": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "description": "Which connected accounts to send to. Ids come from list_accounts."
+          },
+          "media": {
+            "description": "Images or video the user attached in this conversation. PREFER THIS over mediaUrls when the user actually attached something. Attaches to the FIRST segment. Instagram and TikTok reject a post with no media, so this is what makes them usable at all.",
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "download_url": {
+                  "type": "string",
+                  "description": "Where the file can be fetched from."
+                },
+                "file_id": {
+                  "type": "string",
+                  "description": "The platform's identifier for the file."
+                },
+                "mime_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "download_url",
+                "file_id"
+              ]
+            }
+          },
+          "mediaUrls": {
+            "description": "Public https links to images or video to publish with this post, for clients that cannot attach files directly. Use ONLY when you already have a link — never invent one, and never use this to work around a file you cannot attach. Attaches to the FIRST segment.",
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "required": [
+          "segments",
+          "channelIds"
+        ]
+      }
+    },
+    {
+      "name": "publish_post",
+      "description": "Publishes a post to the user's connected social accounts, or schedules it for a future time by setting scheduledAt (null publishes immediately; the limit is 30 days ahead). Run preview_post first and resolve any issues — this tool refuses a post that exceeds a network's limits. To attach an image or video the user shared, pass it in `media` (or `mediaUrls` if you only have a public link); Instagram and TikTok reject a post that has none. Pass a stable idempotencyKey so a repeated call cannot publish the same thing twice. The result is a per-network receipt: some networks can succeed while others fail, and that outcome must be reported to the user network by network.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "segments": {
+            "minItems": 1,
+            "maxItems": 25,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 10000,
+                  "description": "The text of this post. Must not be blank."
+                },
+                "mediaIds": {
+                  "default": [],
+                  "description": "URLs of media already stored with 1Social. Leave empty and use the `media` field to attach a file.",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "required": [
+                "text"
+              ]
+            },
+            "description": "The post. One segment is a normal post; two or more is a thread."
+          },
+          "channelIds": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "description": "Which connected accounts to send to. Ids come from list_accounts."
+          },
+          "media": {
+            "description": "Images or video the user attached in this conversation. PREFER THIS over mediaUrls when the user actually attached something. Attaches to the FIRST segment. Instagram and TikTok reject a post with no media, so this is what makes them usable at all.",
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "download_url": {
+                  "type": "string",
+                  "description": "Where the file can be fetched from."
+                },
+                "file_id": {
+                  "type": "string",
+                  "description": "The platform's identifier for the file."
+                },
+                "mime_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "download_url",
+                "file_id"
+              ]
+            }
+          },
+          "mediaUrls": {
+            "description": "Public https links to images or video to publish with this post, for clients that cannot attach files directly. Use ONLY when you already have a link — never invent one, and never use this to work around a file you cannot attach. Attaches to the FIRST segment.",
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "scheduledAt": {
+            "default": null,
+            "description": "ISO 8601 UTC timestamp to publish at, or null to publish immediately. Must be in the future and no more than 30 days ahead.",
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$",
+            "nullable": true
+          },
+          "idempotencyKey": {
+            "description": "Send a stable key so a repeated call cannot publish twice. Reusing a key returns the original post with deduplicated=true instead of creating another.",
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "segments",
+          "channelIds"
+        ]
+      }
+    },
+    {
+      "name": "list_posts",
+      "description": "Lists the user's posts with the outcome on each network: delivered, failed with a readable reason, cancelled, or `unknown` when 1Social genuinely cannot tell. Includes stored engagement metrics where the network reports any. Pass postId to fetch one post, status to filter, or limit to shorten the list. Delivery ids needed by retry_delivery and confirm_delivery come from here.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "description": "Fetch one specific post instead of the recent list.",
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "status": {
+            "description": "Return only posts with this overall status.",
+            "type": "string",
+            "enum": [
+              "scheduled",
+              "in_progress",
+              "all_delivered",
+              "partial",
+              "all_failed",
+              "contains_unknown",
+              "cancelled"
+            ]
+          },
+          "limit": {
+            "description": "How many posts to return.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        }
+      }
+    },
+    {
+      "name": "update_post",
+      "description": "Changes the content and scheduled time of a post that has not been sent yet. Only works while the post is still editable — a post that is published, in progress, or cancelled cannot be edited. The networks have no edit endpoint, so this withdraws the scheduled post and replaces it; if some networks accept the replacement and others do not, the result names the ones that kept the old version.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "description": "The post id, from list_posts or publish_post."
+          },
+          "segments": {
+            "minItems": 1,
+            "maxItems": 25,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 10000,
+                  "description": "The text of this post. Must not be blank."
+                },
+                "mediaIds": {
+                  "default": [],
+                  "description": "URLs of media already stored with 1Social. Leave empty and use the `media` field to attach a file.",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "required": [
+                "text"
+              ]
+            },
+            "description": "The post. One segment is a normal post; two or more is a thread."
+          },
+          "scheduledAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$",
+            "description": "The new publish time. Required — an edit cannot turn a scheduled post immediate."
+          }
+        },
+        "required": [
+          "postId",
+          "segments",
+          "scheduledAt"
+        ]
+      }
+    },
+    {
+      "name": "cancel_post",
+      "description": "Cancels a scheduled post so it will not be published, and releases the quota it had reserved. The post stays in the list with a cancelled status and its receipt intact. Use this rather than delete_post when the post has not gone out yet.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "description": "The post id, from list_posts or publish_post."
+          }
+        },
+        "required": [
+          "postId"
+        ]
+      }
+    },
+    {
+      "name": "delete_post",
+      "description": "Deletes a post from 1Social and attempts to remove the published post from each network. Removal works on X, LinkedIn, Bluesky and Facebook; Instagram, TikTok and Threads expose no working delete API, so a post that went to them STAYS LIVE and only the user can take it down. On a thread, only the first post is removed and the remainder stay live as orphans. The result reports what actually came down, per network — report that to the user accurately rather than confirming a clean delete. Confirm with the user before calling this.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "description": "The post id, from list_posts or publish_post."
+          }
+        },
+        "required": [
+          "postId"
+        ]
+      }
+    },
+    {
+      "name": "retry_delivery",
+      "description": "Retries one failed delivery to a single network, leaving the deliveries that already succeeded untouched. Retrying spends quota again. It is refused for a permanent failure such as a revoked credential or a policy rejection, because it would only fail again. For a delivery in the `unknown` state, `force` is required and retrying MAY publish a second copy — ask the user before doing that.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "deliveryId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+            "description": "The failed delivery to retry. Delivery ids come from a post in list_posts."
+          },
+          "force": {
+            "default": false,
+            "description": "Required to retry a delivery in the `unknown` state, where retrying MAY publish a second copy. Ask the user before setting this.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "deliveryId"
+        ]
+      }
+    },
+    {
+      "name": "upload_media",
+      "description": "Gets an upload target for a file you hold locally, for clients that cannot attach files to a tool call. Use it ONLY when you have the file itself and no public link — if the user attached something, pass that in publish_post's `media` instead, and if you already have a public https link use `mediaUrls`. The flow is: 1. Call this tool with the file's name, MIME type and size. 2. PUT the raw bytes to the uploadUrl it returns, sending uploadHeaders exactly as given. 3. Pass the returned publicUrl in `mediaUrls` when you call preview_post or publish_post. The upload target is short-lived, so do step 2 straight away. Serving the file from a local web server instead does not work: only public https links are accepted.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "description": "The original file name. Kept for the record; the stored type comes from contentType."
+          },
+          "contentType": {
+            "type": "string",
+            "enum": [
+              "image/jpeg",
+              "image/png",
+              "image/webp",
+              "image/gif",
+              "video/mp4",
+              "video/quicktime"
+            ],
+            "description": "The file's MIME type. Anything outside this list is refused before uploading."
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991,
+            "description": "Size in bytes. Images cap at 15 MB, video at 200 MB, and the check happens now."
+          }
+        },
+        "required": [
+          "filename",
+          "contentType",
+          "sizeBytes"
+        ]
+      }
+    },
+    {
+      "name": "confirm_delivery",
+      "description": "Records the answer to a delivery 1Social could not determine: whether the post is actually live on that network. The USER must check the network and say — never infer this, and never call it on their behalf without an explicit answer. Confirming that a post is live commits the quota it used; confirming that it is not marks the delivery failed so it can be retried.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "deliveryId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "delivered": {
+            "type": "boolean",
+            "description": "Whether the post is actually live on the network. The USER must confirm this by looking at it; never guess or infer it."
+          }
+        },
+        "required": [
+          "deliveryId",
+          "delivered"
+        ]
+      }
+    }
+  ],
+  "version": "1.0.0"
+}

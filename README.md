@@ -156,6 +156,19 @@ Flow details: [docs/oauth.md](docs/oauth.md).
 
 Common connection, OAuth, and tool-call errors: [docs/troubleshooting.md](docs/troubleshooting.md).
 
+## Marketplace listings
+
+This repo is the source for two listings:
+
+| Registry | Record | Manifest |
+|---|---|---|
+| [MCP Registry](https://registry.modelcontextprotocol.io) | `dev.1social/1social` | `server.json` — published by CI on a `v*` tag, authenticated by a DNS TXT record on `1social.dev` |
+| [LobeHub](https://lobehub.com/mcp/sultanlive-1social-mcp) | `sultanlive-1social-mcp` | `lhm.plugin.json` — published with `npx -y @lobehub/market-cli plugin publish --dir .` |
+
+The `tools` array in `lhm.plugin.json` is **generated** from the `TOOLS` table in the server's own contract (`packages/contract/src/mcp/tools.ts` in the private repo), the same table that answers `tools/list`. It is a snapshot: when the tool surface changes, regenerate it rather than hand-editing, or the listing will describe a server that no longer exists.
+
+Note that the two registries carry different version numbers on purpose — `server.json` is at `0.1.0`, while LobeHub assigned `1.0.0` at import time and a version cannot be renamed.
+
 ## Project links
 
 - Product: [1social.dev](https://1social.dev)
