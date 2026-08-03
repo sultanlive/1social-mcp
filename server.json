@@ -1,0 +1,58 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.1social/1social",
+  "title": "1Social",
+  "description": "Publish, schedule and verify social posts across seven networks from your AI assistant.",
+  "websiteUrl": "https://1social.dev/mcp",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/sultanlive/1social-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.1social.dev/mcp"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://1social.dev/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    },
+    {
+      "src": "https://1social.dev/web-app-manifest-512x512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "com.github": {
+        "serverDisplayName": "1Social",
+        "tags": [
+          "social-media",
+          "publishing",
+          "scheduling",
+          "instagram",
+          "tiktok",
+          "linkedin",
+          "bluesky",
+          "threads",
+          "cross-posting"
+        ],
+        "categories": [
+          "Social Media",
+          "Marketing",
+          "Content",
+          "Productivity"
+        ]
+      }
+    }
+  }
+}

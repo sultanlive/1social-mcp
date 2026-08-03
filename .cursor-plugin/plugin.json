@@ -1,0 +1,25 @@
+{
+  "name": "1social",
+  "displayName": "1Social",
+  "description": "Publish to Instagram, TikTok, X, LinkedIn, Bluesky, Threads and Facebook from Cursor: check a draft against every network's limits, publish or schedule it, and read the receipt that says what actually landed and what failed.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Sultan Kadyrkesh"
+  },
+  "publisher": "1social",
+  "homepage": "https://1social.dev/mcp",
+  "repository": "https://github.com/sultanlive/1social-mcp",
+  "license": "MIT",
+  "logo": "assets/logo.svg",
+  "category": "Productivity",
+  "keywords": [
+    "social-media",
+    "publishing",
+    "scheduling",
+    "instagram",
+    "tiktok",
+    "linkedin",
+    "bluesky"
+  ],
+  "mcpServers": "mcp.json"
+}

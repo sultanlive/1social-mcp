@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "1social": {
+      "type": "http",
+      "url": "https://mcp.1social.dev/mcp"
+    }
+  }
+}
