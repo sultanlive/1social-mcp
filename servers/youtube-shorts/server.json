@@ -4,7 +4,7 @@
   "title": "YouTube Shorts by 1Social",
   "description": "Upload and schedule YouTube Shorts from your AI assistant.",
   "websiteUrl": "https://1social.dev/post-to/youtube",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://mcp.1social.dev/mcp"
+      "url": "https://mcp.1social.dev/mcp/youtube-shorts"
     }
   ],
   "icons": [

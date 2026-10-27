@@ -4,7 +4,7 @@
   "title": "Bluesky by 1Social",
   "description": "Publish and schedule Bluesky posts and threads from your AI assistant.",
   "websiteUrl": "https://1social.dev/post-to/bluesky",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://mcp.1social.dev/mcp"
+      "url": "https://mcp.1social.dev/mcp/bluesky"
     }
   ],
   "icons": [
