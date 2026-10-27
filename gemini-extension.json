@@ -1,0 +1,9 @@
+{
+  "name": "1social",
+  "version": "1.0.0",
+  "mcpServers": {
+    "1social": {
+      "httpUrl": "https://mcp.1social.dev/mcp"
+    }
+  }
+}

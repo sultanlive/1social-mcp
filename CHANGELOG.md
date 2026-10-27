@@ -2,6 +2,12 @@
 
 All notable changes to the 1Social MCP listing are recorded here. Versions match the records published to `registry.modelcontextprotocol.io`.
 
+## 1.0.0 — 2026-10-27
+
+- Eight per-network registry entries alongside `dev.1social/1social`, all on the same remote: `dev.1social/instagram`, `tiktok`, `x-twitter`, `threads`, `linkedin`, `facebook`, `youtube-shorts`, `bluesky` (`servers/<network>/server.json`). One tag publishes all nine.
+- YouTube Shorts joins the network list (eight networks).
+- `llms-install.md` for agents that install servers from the README (Cline).
+
 ## 0.1.0 — 2026-08-03
 
 - Initial registry listing under the `dev.1social/1social` namespace.

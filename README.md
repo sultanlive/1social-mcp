@@ -2,7 +2,7 @@
 
 **Model Context Protocol server for publishing to social networks — secured by OAuth.**
 
-1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads and Facebook in natural language.
+1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook and YouTube Shorts in natural language.
 
 - **Server URL:** `https://mcp.1social.dev/mcp`
 - **Transport:** Streamable HTTP
@@ -88,7 +88,7 @@ Publishing costs us money per delivery, so the quota is metered in **deliveries,
 |---|---|---|---|
 | **Price** | $0 | $19/mo | $39/mo |
 | **Monthly deliveries** | 30 units | 600 units | 1,600 units |
-| All seven networks | ✅ | ✅ | ✅ |
+| All eight networks | ✅ | ✅ | ✅ |
 | Delivery receipts & retries | ✅ | ✅ | ✅ |
 
 A new account has a small free monthly allowance — enough to publish, watch the receipt come back, retry something, and schedule a post — so the tools work before you pay for anything. A failed delivery does not count against the quota when the failure was ours or the network's.

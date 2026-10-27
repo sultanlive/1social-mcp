@@ -24,8 +24,15 @@ jobs:
           sudo install -m 755 mcp-publisher /usr/local/bin/mcp-publisher
           mcp-publisher --version
 
-      - name: Validate server.json
-        run: mcp-publisher validate
+      # server.json is the whole-server entry (dev.1social/1social); servers/<network>/server.json
+      # are the per-network entries. All share one version, so one tag publishes every one of them.
+      - name: Validate
+        run: |
+          for f in server.json servers/*/server.json; do
+            echo "::group::$f"
+            mcp-publisher validate "$f"
+            echo "::endgroup::"
+          done
 
       # DNS auth, not GitHub auth: the namespace is `dev.1social/...`, which is proved by a TXT
       # record on 1social.dev carrying the public half of MCP_PRIVATE_KEY.
@@ -35,4 +42,9 @@ jobs:
         run: mcp-publisher login dns --domain 1social.dev --private-key "$MCP_PRIVATE_KEY"
 
       - name: Publish
-        run: mcp-publisher publish ./server.json
+        run: |
+          for f in server.json servers/*/server.json; do
+            echo "::group::$f"
+            mcp-publisher publish "$f"
+            echo "::endgroup::"
+          done

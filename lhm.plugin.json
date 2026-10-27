@@ -1,7 +1,7 @@
 {
   "author": "Sultan Kadyrkesh",
   "authorUrl": "https://github.com/sultanlive",
-  "description": "Publish, schedule and verify social posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads and Facebook from your AI assistant. Remote MCP server, OAuth 2.1, no API keys.",
+  "description": "Publish, schedule and verify social posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook and YouTube Shorts from your AI assistant. Remote MCP server, OAuth 2.1, no API keys.",
   "identifier": "sultanlive-1social-mcp",
   "name": "1Social MCP",
   "tags": [

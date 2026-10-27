@@ -1,0 +1,57 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.1social/x-twitter",
+  "title": "X (Twitter) by 1Social",
+  "description": "Publish and schedule tweets and threads on X (Twitter) from your AI assistant.",
+  "websiteUrl": "https://1social.dev/post-to/x",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/sultanlive/1social-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.1social.dev/mcp"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://1social.dev/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    },
+    {
+      "src": "https://1social.dev/web-app-manifest-512x512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "com.github": {
+        "serverDisplayName": "X (Twitter) by 1Social",
+        "tags": [
+          "x",
+          "twitter",
+          "tweet",
+          "twitter-threads",
+          "twitter-scheduler",
+          "social-media",
+          "scheduling",
+          "publishing"
+        ],
+        "categories": [
+          "Social Media",
+          "Marketing",
+          "Content",
+          "Productivity"
+        ]
+      }
+    }
+  }
+}

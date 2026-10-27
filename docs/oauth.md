@@ -45,7 +45,7 @@ Access tokens are **opaque**, not signed JWTs. The MCP server resolves each one 
 
 The token authorizes the published MCP tools against **your** 1Social account: your connected channels, your posts, your quota.
 
-**It does not carry your social credentials.** The access tokens for Instagram, TikTok, X, LinkedIn, Bluesky, Threads and Facebook stay inside 1Social and are never returned by a tool. An assistant with a 1Social token can publish through 1Social; it cannot take over your accounts, change their settings, or read your DMs.
+**It does not carry your social credentials.** The access tokens for Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook and YouTube Shorts stay inside 1Social and are never returned by a tool. An assistant with a 1Social token can publish through 1Social; it cannot take over your accounts, change their settings, or read your DMs.
 
 Connecting a *new* social account is deliberately not a tool. It needs a browser and your signature on the network's own consent screen.
 
