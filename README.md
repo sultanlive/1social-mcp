@@ -2,7 +2,7 @@
 
 **Model Context Protocol server for publishing to social networks — secured by OAuth.**
 
-1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook and YouTube Shorts in natural language.
+1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest and Telegram channels in natural language.
 
 - **Server URL:** `https://mcp.1social.dev/mcp`
 - **Transport:** Streamable HTTP
@@ -75,7 +75,8 @@ A post to four networks can land on three. Every tool result is per network: the
 
 | Network | Remote delete |
 |---|---|
-| X, LinkedIn, Bluesky, Facebook | ✅ works |
+| X, LinkedIn, Bluesky, Facebook, Pinterest | ✅ works |
+| Telegram | ✅ within 48 hours of publishing — a Telegram rule for bots; after that, delete it in Telegram |
 | Instagram, TikTok, Threads | ❌ no working delete API — the post **stays live** and only you can take it down |
 
 On a multi-part thread only the first post is removed; the rest stay live as orphans. The tool reports what actually came down, per network, and the assistant is instructed to tell you that rather than confirm a clean delete.
@@ -88,7 +89,7 @@ Publishing costs us money per delivery, so the quota is metered in **deliveries,
 |---|---|---|---|
 | **Price** | $0 | $19/mo | $39/mo |
 | **Monthly deliveries** | 30 units | 600 units | 1,600 units |
-| All eight networks | ✅ | ✅ | ✅ |
+| All ten networks | ✅ | ✅ | ✅ |
 | Delivery receipts & retries | ✅ | ✅ | ✅ |
 
 A new account has a small free monthly allowance — enough to publish, watch the receipt come back, retry something, and schedule a post — so the tools work before you pay for anything. A failed delivery does not count against the quota when the failure was ours or the network's.

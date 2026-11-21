@@ -4,7 +4,7 @@
   "title": "LinkedIn by 1Social",
   "description": "Publish and schedule LinkedIn posts from your AI assistant.",
   "websiteUrl": "https://1social.dev/post-to/linkedin",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"

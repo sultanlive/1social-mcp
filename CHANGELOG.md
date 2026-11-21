@@ -2,6 +2,11 @@
 
 All notable changes to the 1Social MCP listing are recorded here. Versions match the records published to `registry.modelcontextprotocol.io`.
 
+## 1.0.3 — 2026-11-22
+
+- Ten networks. Pinterest (image pins and carousels on a board) and Telegram channels (through the 1Social bot) join the list, each with its own registry entry on its own mirror: `dev.1social/pinterest` → `https://mcp.1social.dev/mcp/pinterest`, `dev.1social/telegram` → `https://mcp.1social.dev/mcp/telegram`. One tag publishes all eleven.
+- Telegram posts can be removed for 48 hours after publishing; Pinterest pins can be removed any time.
+
 ## 1.0.1 — 2026-10-27
 
 - Each per-network entry now has its own remote, the `/mcp/<network>` mirror of the same server (`https://mcp.1social.dev/mcp/instagram`, …). The registry accepts a remote URL in one record only, so 1.0.0 published `dev.1social/1social` and refused the other eight.

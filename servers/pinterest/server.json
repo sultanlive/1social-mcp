@@ -1,0 +1,55 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.1social/pinterest",
+  "title": "Pinterest by 1Social",
+  "description": "Publish and schedule Pinterest pins from your AI assistant.",
+  "websiteUrl": "https://1social.dev/post-to/pinterest",
+  "version": "1.0.3",
+  "repository": {
+    "url": "https://github.com/sultanlive/1social-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.1social.dev/mcp/pinterest"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://1social.dev/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    },
+    {
+      "src": "https://1social.dev/web-app-manifest-512x512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "com.github": {
+        "serverDisplayName": "Pinterest by 1Social",
+        "tags": [
+          "pinterest",
+          "pins",
+          "pinterest-scheduler",
+          "social-media",
+          "scheduling",
+          "publishing"
+        ],
+        "categories": [
+          "Social Media",
+          "Marketing",
+          "Content",
+          "Productivity"
+        ]
+      }
+    }
+  }
+}
