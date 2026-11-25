@@ -2,6 +2,12 @@
 
 All notable changes to the 1Social MCP listing are recorded here. Versions match the records published to `registry.modelcontextprotocol.io`.
 
+## 1.0.4 — 2026-11-26
+
+- Eleven networks. Tumblr joins (posts to the blogs you pick: text, up to 30 images or one video, a title, a link card, a source and tags), with its own registry entry on its own mirror: `dev.1social/tumblr` → `https://mcp.1social.dev/mcp/tumblr`. One tag publishes all twelve.
+- Tumblr posts can be removed any time.
+- README: current prices (Solo $29, Pro $49, 7-day free trial).
+
 ## 1.0.3 — 2026-11-22
 
 - Ten networks. Pinterest (image pins and carousels on a board) and Telegram channels (through the 1Social bot) join the list, each with its own registry entry on its own mirror: `dev.1social/pinterest` → `https://mcp.1social.dev/mcp/pinterest`, `dev.1social/telegram` → `https://mcp.1social.dev/mcp/telegram`. One tag publishes all eleven.

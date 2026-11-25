@@ -4,7 +4,7 @@
   "title": "Instagram by 1Social",
   "description": "Publish and schedule Instagram posts, Reels and carousels from your AI assistant.",
   "websiteUrl": "https://1social.dev/post-to/instagram",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"

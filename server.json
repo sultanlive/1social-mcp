@@ -2,9 +2,9 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "dev.1social/1social",
   "title": "1Social",
-  "description": "Publish, schedule and verify social posts across ten networks from your AI assistant.",
+  "description": "Publish, schedule and verify social posts across eleven networks from your AI assistant.",
   "websiteUrl": "https://1social.dev/mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"
@@ -49,7 +49,8 @@
           "youtube-shorts",
           "bluesky",
           "pinterest",
-          "telegram"
+          "telegram",
+          "tumblr"
         ],
         "categories": [
           "Social Media",

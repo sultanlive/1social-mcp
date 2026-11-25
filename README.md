@@ -2,7 +2,7 @@
 
 **Model Context Protocol server for publishing to social networks — secured by OAuth.**
 
-1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest and Telegram channels in natural language.
+1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest, Telegram channels and Tumblr blogs in natural language.
 
 - **Server URL:** `https://mcp.1social.dev/mcp`
 - **Transport:** Streamable HTTP
@@ -75,7 +75,7 @@ A post to four networks can land on three. Every tool result is per network: the
 
 | Network | Remote delete |
 |---|---|
-| X, LinkedIn, Bluesky, Facebook, Pinterest | ✅ works |
+| X, LinkedIn, Bluesky, Facebook, Pinterest, Tumblr | ✅ works |
 | Telegram | ✅ within 48 hours of publishing — a Telegram rule for bots; after that, delete it in Telegram |
 | Instagram, TikTok, Threads | ❌ no working delete API — the post **stays live** and only you can take it down |
 
@@ -85,14 +85,15 @@ On a multi-part thread only the first post is removed; the rest stay live as orp
 
 Publishing costs us money per delivery, so the quota is metered in **deliveries, not posts** — one post to four networks is four deliveries. A delivery to X costs more units than the others because X charges per post ([pricing](https://1social.dev/pricing) has the current numbers).
 
-| | No subscription | Solo | Pro |
-|---|---|---|---|
-| **Price** | $0 | $19/mo | $39/mo |
-| **Monthly deliveries** | 30 units | 600 units | 1,600 units |
-| All ten networks | ✅ | ✅ | ✅ |
-| Delivery receipts & retries | ✅ | ✅ | ✅ |
+| | Solo | Pro |
+|---|---|---|
+| **Price** | $29/mo | $49/mo |
+| **Free trial** | 7 days | 7 days |
+| **Monthly deliveries** | 600 units | 1,600 units |
+| All eleven networks | ✅ | ✅ |
+| Delivery receipts & retries | ✅ | ✅ |
 
-A new account has a small free monthly allowance — enough to publish, watch the receipt come back, retry something, and schedule a post — so the tools work before you pay for anything. A failed delivery does not count against the quota when the failure was ours or the network's.
+Every plan starts with a 7-day free trial. A failed delivery does not count against the quota when the failure was ours or the network's.
 
 **You never have to leave the chat to pay.** A tool call that runs out of quota comes back with a checkout link for your account.
 
