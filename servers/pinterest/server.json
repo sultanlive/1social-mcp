@@ -4,7 +4,7 @@
   "title": "Pinterest by 1Social",
   "description": "Publish and schedule Pinterest pins from your AI assistant.",
   "websiteUrl": "https://1social.dev/post-to/pinterest",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"

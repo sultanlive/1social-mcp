@@ -1,0 +1,55 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.1social/discord",
+  "title": "Discord by 1Social",
+  "description": "Publish and schedule Discord server posts from your AI assistant.",
+  "websiteUrl": "https://1social.dev/post-to/discord",
+  "version": "1.0.5",
+  "repository": {
+    "url": "https://github.com/sultanlive/1social-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.1social.dev/mcp/discord"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://1social.dev/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    },
+    {
+      "src": "https://1social.dev/web-app-manifest-512x512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "com.github": {
+        "serverDisplayName": "Discord by 1Social",
+        "tags": [
+          "discord",
+          "discord-bot",
+          "discord-scheduler",
+          "social-media",
+          "scheduling",
+          "publishing"
+        ],
+        "categories": [
+          "Social Media",
+          "Marketing",
+          "Content",
+          "Productivity"
+        ]
+      }
+    }
+  }
+}

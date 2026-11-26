@@ -2,6 +2,11 @@
 
 All notable changes to the 1Social MCP listing are recorded here. Versions match the records published to `registry.modelcontextprotocol.io`.
 
+## 1.0.5 — 2026-11-26
+
+- Twelve networks. Discord joins: the 1Social bot posts to the text, announcement and forum channels you pick (a forum post is titled with the first line; required forum tags via `discord.tags`; the parts of a thread go into one Discord thread), with its own registry entry on its own mirror: `dev.1social/discord` → `https://mcp.1social.dev/mcp/discord`. One tag publishes all thirteen.
+- Discord posts can be removed any time, thread included.
+
 ## 1.0.4 — 2026-11-26
 
 - Eleven networks. Tumblr joins (posts to the blogs you pick: text, up to 30 images or one video, a title, a link card, a source and tags), with its own registry entry on its own mirror: `dev.1social/tumblr` → `https://mcp.1social.dev/mcp/tumblr`. One tag publishes all twelve.

@@ -4,7 +4,7 @@
   "title": "Threads by 1Social",
   "description": "Publish and schedule Threads posts from your AI assistant.",
   "websiteUrl": "https://1social.dev/post-to/threads",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
     "url": "https://github.com/sultanlive/1social-mcp",
     "source": "github"

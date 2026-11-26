@@ -1,7 +1,7 @@
 {
   "name": "1social",
   "displayName": "1Social",
-  "description": "Publish to Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest, Telegram and Tumblr from Cursor: check a draft against every network's limits, publish or schedule it, and read the receipt that says what actually landed and what failed.",
+  "description": "Publish to Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest, Telegram, Tumblr and Discord from Cursor: check a draft against every network's limits, publish or schedule it, and read the receipt that says what actually landed and what failed.",
   "version": "0.1.0",
   "author": {
     "name": "Sultan Kadyrkesh"
@@ -22,7 +22,8 @@
     "bluesky",
     "pinterest",
     "telegram",
-    "tumblr"
+    "tumblr",
+    "discord"
   ],
   "mcpServers": "mcp.json"
 }

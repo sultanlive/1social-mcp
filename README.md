@@ -2,7 +2,7 @@
 
 **Model Context Protocol server for publishing to social networks — secured by OAuth.**
 
-1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest, Telegram channels and Tumblr blogs in natural language.
+1Social MCP lets an AI assistant post for you. Connect Claude, ChatGPT, Cursor, VS Code, or a CLI client to 1Social, then publish, schedule, check and fix posts across Instagram, TikTok, X, LinkedIn, Bluesky, Threads, Facebook, YouTube Shorts, Pinterest, Telegram channels, Tumblr blogs and Discord servers in natural language.
 
 - **Server URL:** `https://mcp.1social.dev/mcp`
 - **Transport:** Streamable HTTP
@@ -76,6 +76,7 @@ A post to four networks can land on three. Every tool result is per network: the
 | Network | Remote delete |
 |---|---|
 | X, LinkedIn, Bluesky, Facebook, Pinterest, Tumblr | ✅ works |
+| Discord | ✅ the whole post, its thread included (needs the bot's Manage Threads permission; without it, message by message) |
 | Telegram | ✅ within 48 hours of publishing — a Telegram rule for bots; after that, delete it in Telegram |
 | Instagram, TikTok, Threads | ❌ no working delete API — the post **stays live** and only you can take it down |
 
@@ -90,7 +91,7 @@ Publishing costs us money per delivery, so the quota is metered in **deliveries,
 | **Price** | $29/mo | $49/mo |
 | **Free trial** | 7 days | 7 days |
 | **Monthly deliveries** | 600 units | 1,600 units |
-| All eleven networks | ✅ | ✅ |
+| All twelve networks | ✅ | ✅ |
 | Delivery receipts & retries | ✅ | ✅ |
 
 Every plan starts with a 7-day free trial. A failed delivery does not count against the quota when the failure was ours or the network's.
